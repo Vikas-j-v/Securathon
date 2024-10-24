@@ -7,6 +7,70 @@
     <link rel="stylesheet" href="style.css">
     <script src="../public/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+    position: relative;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+/* Hamburger menu button (hidden on large screens) */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* For mobile view (show hamburger) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide nav links initially */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #1a1a1a;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show nav links when active */
+    }
+
+    .nav-links a {
+        padding: 1rem 0;
+        border-bottom: 1px solid #333;
+        width: 100%;
+    }
+
+    .mobile-menu-btn {
+        display: block; /* Show hamburger button on mobile */
+    }
+}
+
+    </style>
 </head>
 <body class="dark-mode">
     <!-- Navigation -->
@@ -16,7 +80,7 @@
             <span>CyberGuard</span>
         </div>
         <div class="nav-links">
-            <a href="#dashboard" class="active"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="/" class="active"><i class="fas fa-home"></i> Dashboard</a>
             <a href="/training"><i class="fas fa-graduation-cap"></i> Training</a>
             <a href="/lab"><i class="fas fa-flask"></i> Cyber Lab</a>
             <a href="/quiz"><i class="fas fa-tasks"></i> Quests</a>
@@ -390,6 +454,19 @@
         
         
     </main>
+
+    <script>    // Mobile Menu Toggle with null chec
+    // Select the hamburger button and nav links container
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinksContainer = document.querySelector('.nav-links');
+
+    // Mobile Menu Toggle
+    if (mobileMenuBtn && navLinksContainer) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+    }
+</script>
 
     <!-- Notification System -->
     <div id="notification-container"></div>

@@ -87,6 +87,13 @@ app.get('/cyber-game', (req, res) => {
     res.render('cyber-game', { user: req.session.user || null }); // Pass user info to helpline page
 });
 
+app.get('/exploit', (req, res) => {
+    res.render('exploit', { user: req.session.user || null }); // Pass user info to helpline page
+});
+
+app.get('/architecture', (req, res) => {
+    res.render('architecture', { user: req.session.user || null }); // Pass user info to helpline page
+});
 
 
 // Signup Route
