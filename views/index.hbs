@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberGuard Training Platform</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="../public/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -450,10 +451,51 @@ nav {
                 </div>
             </div>
         </section>
-
+<div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-4">Check if Email is Fraudulent</h1>
+    
+    <form id="emailForm" class="space-y-4">
+      <div>
+        <label for="email" class="block text-lg font-medium">Enter Email:</label>
+        <input type="email" id="email" class="w-full text-black px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300" placeholder="example@mail.com" required>
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md">Check Email</button>
+    </form>
+    
+    <div id="result" class="mt-4 text-lg font-semibold"></div>
+  </div>
         
         
     </main>
+
+      <script>
+    const fraudulentEmails = [
+      "fraud@example.com", "scam@phishing.com", "malware@hackmail.com"
+    ];
+
+    const fraudulentDomains = [
+      "fraud.com", "phishing.com", "hackmail.com", "verify.com"
+    ];
+
+    document.getElementById('emailForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const emailInput = document.getElementById('email').value.trim();
+      const resultDiv = document.getElementById('result');
+
+      // Extract domain from email
+      const emailDomain = emailInput.split('@')[1];
+
+      // Check if email is in the fraudulent email list or if its domain is fraudulent
+      if (fraudulentEmails.includes(emailInput.toLowerCase()) || fraudulentDomains.includes(emailDomain.toLowerCase())) {
+        resultDiv.textContent = 'Warning: This email is potentially fraudulent!';
+        resultDiv.className = 'text-red-600 mt-4 text-lg font-semibold';
+      } else {
+        resultDiv.textContent = 'This email appears safe.';
+        resultDiv.className = 'text-green-600 mt-4 text-lg font-semibold';
+      }
+    });
+  </script>
 
     <script>    // Mobile Menu Toggle with null chec
     // Select the hamburger button and nav links container
