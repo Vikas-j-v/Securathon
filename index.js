@@ -104,7 +104,7 @@ app.post('/signup', async (req, res) => {
         if (check) {
             return res.render('signup', { content: 'Username already taken', wrongPassword: "Username taken" });
         } else {
-            // const hashedPassword = await bcrypt.hash(req.body.password, 10); // Hash the password
+            const hashedPassword = await bcrypt.hash(req.body.password, 10); // Hash the password
 
             const data = {
                 name: req.body.name,
